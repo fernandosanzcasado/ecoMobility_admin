@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./NavBar.css";
@@ -18,13 +18,17 @@ function NavBar() {
     }
   };
 
+  useEffect(() => {
+    showButton();
+  }, []);
+
   window.addEventListener("resize", showButton);
 
   return (
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
+          <Link to="/" className="navbar-logo" onClick={closeMenu}>
             ecoMobility <i className="fab fa-typo3" />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
@@ -39,6 +43,11 @@ function NavBar() {
             <li className="nav-item">
               <Link to="/users" className="nav-links" onClick={closeMenu}>
                 Users
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/stations" className="nav-links" onClick={closeMenu}>
+                Stations
               </Link>
             </li>
             <li className="nav-item">
