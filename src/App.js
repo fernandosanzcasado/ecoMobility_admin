@@ -3,10 +3,10 @@ import NavBar from "./components/NavBar";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./components/pages/Home";
-import Users from "./components/pages/Users";
-import Stations from "./components/pages/Stations";
-import Login from "./components/pages/Login";
+import Home from "./pages/Home";
+import Users from "./pages/Users";
+import Stations from "./pages/Stations";
+import Login from "./pages/Login";
 
 function App() {
   return (
