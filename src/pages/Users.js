@@ -2,5 +2,5 @@ import React from "react";
 import "../App.css";
 
 export default function Users() {
-  return <h1 className="users">USERS</h1>;
+  return <div>Es personal</div>;
 }

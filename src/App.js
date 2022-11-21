@@ -9,14 +9,12 @@ import Stations from "./pages/Stations";
 import Login from "./pages/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
+
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <Layout />,
     children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
       {
         path: "/users",
         element: <Users />,
