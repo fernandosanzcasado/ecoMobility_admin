@@ -7,19 +7,29 @@ import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Stations from "./pages/Stations";
 import Login from "./pages/Login";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./components/Layout";
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
     <>
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/" exact component={Home} />
-          <Route path="/users" component={Users} />
-          <Route path="/stations" component={Stations} />
-          <Route path="/login" component={Login} />
-        </Routes>
-      </Router>
+      {/* <NavBar /> */}
+      <RouterProvider router={router} fallbackElement={<NavBar />} />
     </>
   );
 }
