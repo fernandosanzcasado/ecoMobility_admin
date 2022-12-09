@@ -1,13 +1,6 @@
 import React from "react";
 import "../App.css";
-import Footer from "../components/Footer";
 
-function Home() {
-  return (
-    <>
-      <Footer />
-    </>
-  );
+export default function Home() {
+  return <div>Home page</div>;
 }
-
-export default Home;

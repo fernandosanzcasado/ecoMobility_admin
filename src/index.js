@@ -8,19 +8,25 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import Stations from "./pages/Stations";
 import Home from "./pages/Home";
 import Users from "./pages/Users";
+import Login from "./pages/Login";
 
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
     path: "/users",
     element: <Users />,
+  },
+  {
+    path: "/stations",
+    element: <Stations />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
   },
 ]);
 
