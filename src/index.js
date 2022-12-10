@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import Stations from "./pages/Stations";
 import Home from "./pages/Home";
@@ -27,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
