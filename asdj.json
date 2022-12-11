@@ -1,0 +1,16 @@
+{
+  "codiProv": 17,
+  "direccion": "Carrer de Icària, 14",
+  "id": "767f9b0e-329a-4681-af39-73075b86e68a",
+  "latitud": 42.36972,
+  "longitud": 2.98167,
+  "municipio": "Sant Climent Sescebes",
+  "nPlazas": 1,
+  "potencia": 22,
+  "promotor": null,
+  "provincia": "Girona",
+  "tipoConexion": "MENNEKES.F + Schuko",
+  "tipoCorriente": "AC",
+  "tipoVehiculo": "cotxe i moto",
+  "tipoVelocidad": "semiRAPID i NORMAL"
+}
