@@ -209,7 +209,7 @@ export default function ElectricStations() {
       <Box
         className="pt-3 pb-3 w-100"
         sx={{
-          height: "100%",
+          height: "500px",
         }}
       >
         <DataGrid

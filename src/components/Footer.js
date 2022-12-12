@@ -12,7 +12,7 @@ function Footer() {
   };
 
   return (
-    <div className="footer-container">
+    <footer className="footer-container mt-auto">
       <section className="footer-subscription">
         <p className="footer-subscription-heading"> {t("Footer.Quote1")} </p>
         <p className="footer-subscription-text"> {t("Footer.Quote2")}</p>
@@ -23,13 +23,12 @@ function Footer() {
           <div class="footer-logo">
             <Link to="/home" className="social-logo">
               ecoMobility
-              <i class="fab fa-typo3" />
             </Link>
           </div>
           <small class="website-rights">ecoMobility © 2023</small>
         </div>
       </section>
-    </div>
+    </footer>
   );
 }
 
