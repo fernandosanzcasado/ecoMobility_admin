@@ -1,0 +1,20 @@
+{
+  "Home": {
+    "Email": "Correu electrònic"
+  },
+  "Users": {
+    "Write_Current_Pass": "Introdueix la teva contrasenya actual"
+  },
+  "Stations": {
+    "User_Name": "Nom Usuari"
+  },
+  "Login": {
+    "Filter_By": "Filtrar per"
+  },
+  "Footer": {
+    "Filter_By": "Filtrar per"
+  },
+  "NavBar": {
+    "Filter_By": "Filtrar per"
+  }
+}

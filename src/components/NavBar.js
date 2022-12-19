@@ -28,7 +28,7 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMenu}>
+          <Link to="/home" className="navbar-logo" onClick={closeMenu}>
             ecoMobility <i className="fab fa-typo3" />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
@@ -36,7 +36,7 @@ function NavBar() {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMenu}>
+              <Link to="/home" className="nav-links" onClick={closeMenu}>
                 Home
               </Link>
             </li>

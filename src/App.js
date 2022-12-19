@@ -1,14 +1,13 @@
 import React from "react";
-import NavBar from "./components/NavBar";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Stations from "./pages/Stations";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
+import ElectricStations from "./pages/ElectricStations";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +18,22 @@ const router = createBrowserRouter([
         path: "/users",
         element: <Users />,
       },
+      {
+        path: "/stations",
+        element: <Stations />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/stations/electricStations",
+        element: <ElectricStations />,
+      },
     ],
   },
 ]);
@@ -26,8 +41,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      {/* <NavBar /> */}
-      <RouterProvider router={router} fallbackElement={<NavBar />} />
+      <RouterProvider router={router} />
     </>
   );
 }
