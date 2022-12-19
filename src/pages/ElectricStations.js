@@ -186,7 +186,7 @@ export default function ElectricStations() {
     async function getEstaciones() {
       try {
         const res = await axios.get(
-          `http://13.39.20.131:3000/api/v1/estaciones`
+          `http://15.188.52.76:3000/api/v2/estaciones`
         );
         // console.log(res.data);
         setRows(res.data);
