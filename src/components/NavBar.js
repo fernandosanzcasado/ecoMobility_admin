@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { Button } from "./Button.js";
 
+import { useTranslation } from "react-i18next";
+import "../i18n.js";
+
 function NavBar() {
+  const { t, i18n } = useTranslation();
+
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -37,17 +42,17 @@ function NavBar() {
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Link to="/home" className="nav-links" onClick={closeMenu}>
-                Home
+                {t("NavBar.Home")}
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/users" className="nav-links" onClick={closeMenu}>
-                Users
+                {t("NavBar.Users")}
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/stations" className="nav-links" onClick={closeMenu}>
-                Stations
+                {t("NavBar.Stations")}
               </Link>
             </li>
             <li className="nav-item">

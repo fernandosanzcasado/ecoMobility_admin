@@ -1,54 +1,37 @@
 import React from "react";
 import "../App.css";
 import { Button, ButtonGroup, ButtonToolbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { useTranslation } from "react-i18next";
+import "../i18n.js";
 
 export default function Stations() {
-  const handleClick = () => null;
+  const navigate = useNavigate();
+  const handleClickElectric = () => navigate("/stations/electricStations");
+  const handleClickBike = () => navigate("/stations/bikeStations");
+
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="stations-container">
-      <h1 className="stations-title">STATIONS</h1>
-      <Link to="/stations/electricStations" className="nav-links">
-        Home
-      </Link>
-      {/* <ButtonToolbar aria-label="Toolbar with button groups"> */}
+      <h1 className="stations-title">{t("Stations.Title")}</h1>
       <ButtonGroup aria-label="First group">
         <Button
           style={{ background: "#59DE87" }}
           variant="secondary"
-          onClick={handleClick}
+          onClick={handleClickElectric}
         >
-          Electric stations
+          {t("Stations.Electric")}
         </Button>
-        <Button style={{ background: "#59DE87" }} variant="secondary">
-          Bike stations
+        <Button
+          style={{ background: "#59DE87" }}
+          variant="secondary"
+          onClick={handleClickBike}
+        >
+          {t("Stations.Bike")}
         </Button>
       </ButtonGroup>
-      {/* <ButtonGroup style={{ marginLeft: "1rem" }} aria-label="Second group">
-          <Button
-            style={{ background: "#59DE87" }}
-            variant="secondary"
-            onClick={handleClick}
-          >
-            Add station
-          </Button>
-          <Button
-            style={{ background: "#59DE87" }}
-            variant="secondary"
-            onClick={handleClick}
-          >
-            Delete station
-          </Button>
-          <Button
-            style={{ background: "#59DE87" }}
-            variant="secondary"
-            onClick={handleClick}
-          >
-            Update station
-          </Button>
-        </ButtonGroup> */}
-      {/* </ButtonToolbar> */}
     </div>
   );
 }

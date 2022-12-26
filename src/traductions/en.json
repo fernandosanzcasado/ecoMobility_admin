@@ -1,12 +1,16 @@
 {
   "Home": {
-    "Email": "Correu electrònic"
+    "Users": "Total users",
+    "Electric": "Total electric stations",
+    "Bike": "Total bike stations"
   },
   "Users": {
     "Write_Current_Pass": "Introdueix la teva contrasenya actual"
   },
   "Stations": {
-    "User_Name": "Nom Usuari"
+    "Title": "Stations",
+    "Electric": "Electric Stations",
+    "Bike": "Bike Stations"
   },
   "Login": {
     "Filter_By": "Filtrar per"
@@ -16,6 +20,8 @@
     "Quote2": "Working for a better future using sostenible transport"
   },
   "NavBar": {
-    "Filter_By": "Filtrar per"
+    "Stations": "Stations",
+    "Home": "Home",
+    "Users": "Users"
   }
 }

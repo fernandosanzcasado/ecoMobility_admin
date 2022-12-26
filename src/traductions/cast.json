@@ -1,20 +1,27 @@
 {
   "Home": {
-    "Email": "Correu electrònic"
+    "Users": "Total usuarios",
+    "Electric": "Total estaciones eléctricas",
+    "Bike": "Total estaciones bicicleta"
   },
   "Users": {
     "Write_Current_Pass": "Introdueix la teva contrasenya actual"
   },
   "Stations": {
-    "User_Name": "Nom Usuari"
+    "Title": "Estaciones",
+    "Electric": "Estaciones eléctricas",
+    "Bike": "Estaciones bicicleta"
   },
   "Login": {
     "Filter_By": "Filtrar per"
   },
   "Footer": {
-    "Filter_By": "Filtrar per"
+    "Quote1": "Nothing dresses better than a clear conscience",
+    "Quote2": "Trabajando por un futuro mejor a través del transporte sostenible"
   },
   "NavBar": {
-    "Filter_By": "Filtrar per"
+    "Stations": "Estaciones",
+    "Home": "Página principal",
+    "Users": "Usuarios"
   }
 }

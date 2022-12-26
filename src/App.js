@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import ElectricStations from "./pages/ElectricStations";
+import BikeStations from "./pages/BikeStations";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/stations/electricStations",
         element: <ElectricStations />,
+      },
+      {
+        path: "/stations/bikeStations",
+        element: <BikeStations />,
       },
     ],
   },
