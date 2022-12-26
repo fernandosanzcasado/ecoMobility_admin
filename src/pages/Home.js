@@ -20,7 +20,7 @@ export default function Home() {
           style={{ width: "18rem", background: "#59DE87", marginRight: "8rem" }}
         >
           <Card.Body>
-            <Card.Title>Total Users</Card.Title>
+            <Card.Title>{t("Home.Users")}</Card.Title>
             <Card.Text>Number of registered users</Card.Text>
           </Card.Body>
         </Card>
@@ -28,13 +28,13 @@ export default function Home() {
           style={{ width: "18rem", background: "#59DE87", marginRight: "8rem" }}
         >
           <Card.Body>
-            <Card.Title>Total electric stations</Card.Title>
+            <Card.Title>{t("Home.Electric")}</Card.Title>
             <Card.Text>Number of electric stations</Card.Text>
           </Card.Body>
         </Card>
         <Card style={{ width: "18rem", background: "#59DE87" }}>
           <Card.Body>
-            <Card.Title>Total bike stations</Card.Title>
+            <Card.Title>{t("Home.Bike")}</Card.Title>
             <Card.Text>Number of bike stations</Card.Text>
           </Card.Body>
         </Card>

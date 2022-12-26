@@ -1,6 +1,8 @@
 {
   "Home": {
-    "Email": "Correu electrònic"
+    "Users": "Total usuarios",
+    "Electric": "Total estaciones eléctricas",
+    "Bike": "Total estaciones bicicleta"
   },
   "Users": {
     "Write_Current_Pass": "Introdueix la teva contrasenya actual"
