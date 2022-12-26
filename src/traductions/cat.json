@@ -6,7 +6,9 @@
     "Write_Current_Pass": "Introdueix la teva contrasenya actual"
   },
   "Stations": {
-    "User_Name": "Nom Usuari"
+    "Title": "Estacions",
+    "Electric": "Estacions elèctriques",
+    "Bike": "Estacions Bicicleta"
   },
   "Login": {
     "Filter_By": "Filtrar per"
@@ -16,6 +18,8 @@
     "Quote2": "Treballant per a un futur millor a través del transport sostenible"
   },
   "NavBar": {
-    "Filter_By": "Filtrar per"
+    "Stations": "Estacions",
+    "Home": "Pàgina principal",
+    "Users": "Usuaris"
   }
 }

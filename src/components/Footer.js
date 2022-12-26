@@ -7,9 +7,6 @@ import "../i18n.js";
 
 function Footer() {
   const { t, i18n } = useTranslation();
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
 
   return (
     <footer className="footer-container mt-auto">
