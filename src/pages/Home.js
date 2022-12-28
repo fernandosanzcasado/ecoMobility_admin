@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import "../App.css";
 import { useTranslation } from "react-i18next";
 import "../i18n.js";
+import axios from "axios";
 
 import English from "../images/BanderaInglesa.jpg";
 import Spanish from "../images/BanderaEspañola.jpg";

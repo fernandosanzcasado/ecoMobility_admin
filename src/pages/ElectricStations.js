@@ -185,8 +185,9 @@ export default function ElectricStations() {
   React.useEffect(() => {
     async function getEstaciones() {
       try {
+        console.log("url" + process.env.REACT_APP_BASE_URL);
         const res = await axios.get(
-          `http://15.188.52.76:3000/api/v2/estaciones`
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
         );
         // console.log(res.data);
         setRows(res.data);
