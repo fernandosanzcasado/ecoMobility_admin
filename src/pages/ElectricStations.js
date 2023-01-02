@@ -185,7 +185,6 @@ export default function ElectricStations() {
   React.useEffect(() => {
     async function getEstaciones() {
       try {
-        console.log("url" + process.env.REACT_APP_BASE_URL);
         const res = await axios.get(
           `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
         );

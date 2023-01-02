@@ -14,6 +14,48 @@ export default function Home() {
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
+
+  const [numStations, setNumStations] = React.useState([]);
+  const [numUsers, setNumUsers] = React.useState([]);
+
+  React.useEffect(() => {
+    async function getNumEstaciones() {
+      try {
+        const res = await axios.get(
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/count`
+        );
+        // console.log(res.data);
+        setNumStations(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getNumEstaciones();
+  }, []);
+
+  React.useEffect(() => {
+    console.log(numStations);
+  }, [numStations]);
+
+  React.useEffect(() => {
+    async function getNumUsers() {
+      try {
+        const res = await axios.get(
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/user/count`
+        );
+        // console.log(res.data);
+        setNumUsers(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getNumUsers();
+  }, []);
+
+  React.useEffect(() => {
+    console.log(numUsers);
+  }, [numUsers]);
+
   return (
     <div>
       <div className="cards-container">
@@ -22,7 +64,7 @@ export default function Home() {
         >
           <Card.Body>
             <Card.Title>{t("Home.Users")}</Card.Title>
-            <Card.Text>Number of registered users</Card.Text>
+            <Card.Text>{numUsers}</Card.Text>
           </Card.Body>
         </Card>
         <Card
@@ -30,7 +72,7 @@ export default function Home() {
         >
           <Card.Body>
             <Card.Title>{t("Home.Electric")}</Card.Title>
-            <Card.Text>Number of electric stations</Card.Text>
+            <Card.Text>{numStations}</Card.Text>
           </Card.Body>
         </Card>
         <Card style={{ width: "18rem", background: "#59DE87" }}>
