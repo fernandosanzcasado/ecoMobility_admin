@@ -59,8 +59,9 @@
 }
 
 .nav-links:hover {
-  border-bottom: 4px solid #fff;
+  border-bottom: 4px solid #bfe16a;
   transition: all 0.2s ease-out;
+  color: #bfe16a;
 }
 
 .fa-bars {
@@ -93,7 +94,7 @@
   }
 
   .nav-menu.active {
-    background: #242222;
+    background: #bfe16a;
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
@@ -108,8 +109,9 @@
   }
 
   .nav-links:hover {
-    background-color: #fff;
-    color: #242424;
+    background-color: #bfe16a;
+    color: #bfe16a;
+    background: #bfe16a;
     border-radius: 0;
   }
 
@@ -144,15 +146,16 @@
     text-decoration: none;
     font-size: 1.5rem;
     background-color: transparent;
-    color: #fff;
+    color: #bfe16a;
     padding: 14px 20px;
-    border: 1px solid #fff;
+    border: 1px solid #bfe16a;
     transition: all 0.3s ease-out;
   }
 
   .nav-links-mobile:hover {
-    background: #fff;
-    color: #242424;
+    background: #bfe16a;
+    color: #bfe16a;
+
     transition: 250ms;
   }
 }
