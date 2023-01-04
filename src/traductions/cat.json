@@ -13,7 +13,10 @@
     "Bike": "Estacions Bicicleta"
   },
   "Login": {
-    "Filter_By": "Filtrar per"
+    "Filter_By": "Filtrar per",
+    "Email": "Email de l'administrador",
+    "Password": "Contrasenya de l'administrador",
+    "Button": "Iniciar sessió"
   },
   "Footer": {
     "Quote1": "Nothing dresses better than a clear conscience",

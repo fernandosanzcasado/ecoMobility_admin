@@ -13,7 +13,10 @@
     "Bike": "Bike Stations"
   },
   "Login": {
-    "Filter_By": "Filtrar per"
+    "Filter_By": "Filtrar per",
+    "Email": "Administrator email",
+    "Password": "Administrator password",
+    "Button": "Login"
   },
   "Footer": {
     "Quote1": "Nothing dresses better than a clear conscience",

@@ -2,6 +2,8 @@ import React from "react";
 import "../App.css";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import logo from "../images/EcoMobilityIcon2.png";
+import Button, { ButtonProps } from "@mui/material/Button";
 
 const errorControlLogin = (errorId) => {
   const alertMessage = "";
@@ -68,17 +70,60 @@ export default function Login({ navigation }) {
       });
   }
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     const chargeView = navigation.addListener("focus", () => {
       clearText();
     });
     return chargeView;
-  }, [navigation]);
+  }, [navigation]);*/
 
   const clearText = () => {
     setUserEmail("");
     setUserPassword("");
   };
 
-  return <div className="cards-container"></div>;
+  return (
+    <div className="login-container">
+      <img className="logo-container" src={logo} />
+      <div>
+        <label className="text-input-email"></label>
+        <input
+          id="Input"
+          type="email"
+          name="email"
+          classname="text-input"
+          placeholder={t("Login.Email")}
+          onChangeText={(newtext) => setUserEmail(newtext)}
+        />
+      </div>
+      <div>
+        <label className="text-input-pssw"></label>
+        <input
+          id="Input"
+          type="string"
+          name="password"
+          placeholder={t("Login.Password")}
+          onChangeText={(newtext) => setUserPassword(newtext)}
+          secureTextEntry
+        />
+      </div>
+      <div className="login-button">
+        <Button
+          variant="contained"
+          button-color={"#27CF10"}
+          onClick={() => {
+            if (validation.checkTextInputNotEmpty(userEmail, userPassword)) {
+              console.log("Entro y cumplo el primer check");
+              (async () => {
+                if (await createPostLogin(userEmail, userPassword))
+                  navigation.navigate("Home");
+              })();
+            }
+          }}
+        >
+          {t("Login.Button")}
+        </Button>
+      </div>
+    </div>
+  );
 }
