@@ -41,7 +41,7 @@ export default function Home() {
     async function getNumUsers() {
       try {
         const res = await axios.get(
-          `http://${process.env.REACT_APP_BASE_URL}/api/v2/getAllUsers/count`
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/admin/getAllUsers/count`
         );
         // console.log(res.data);
         setNumUsers(res.data);

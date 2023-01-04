@@ -63,3 +63,7 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.login-container {
+  padding-bottom: 2rem;
+}
