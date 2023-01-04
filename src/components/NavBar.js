@@ -55,11 +55,6 @@ function NavBar() {
                 {t("NavBar.Stations")}
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-links" onClick={closeMenu}>
-                Login
-              </Link>
-            </li>
           </ul>
         </div>
       </nav>

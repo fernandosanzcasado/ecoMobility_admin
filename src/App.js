@@ -13,30 +13,30 @@ import BikeStations from "./pages/BikeStations";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />,
+  },
+  {
+    path: "/ecoMobility",
     element: <Layout />,
     children: [
       {
-        path: "/users",
+        path: "/ecoMobility/users",
         element: <Users />,
       },
       {
-        path: "/stations",
+        path: "/ecoMobility/stations",
         element: <Stations />,
       },
       {
-        path: "/home",
+        path: "/ecoMobility/home",
         element: <Home />,
       },
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/stations/electricStations",
+        path: "/ecoMobility/stations/electricStations",
         element: <ElectricStations />,
       },
       {
-        path: "/stations/bikeStations",
+        path: "/ecoMobility/stations/bikeStations",
         element: <BikeStations />,
       },
     ],
