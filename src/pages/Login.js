@@ -1,49 +1,46 @@
 import React from "react";
 import "../App.css";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../images/EcoMobilityIcon2.png";
 import Button from "@mui/material/Button";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
 
-/*const errorControlLogin = (errorId) => {
+const errorControlLogin = (errorId) => {
   switch (errorId) {
     case 2:
       //Alert.alert(t("Error_Control.Incorrect_Pass"));
-      React.alertMessage("Error_Control.Incorrect_Pass");
+      alert("Error_Control.Incorrect_Pass");
       break;
     case 7:
       //Alert.alert(t("Error_Control.Login_Ok"));
-      React.alertMessage("Error_Control.Login_Ok");
+      alert("Error_Control.Login_Ok");
       break;
     case 8:
-      console.log("entra");
       //Alert.alert(t("Error_Control.Void_Fields"));
-      Alert("Error_Control.Void_Fields");
+      alert("Error_Control.Void_Fields");
       break;
     default:
       break;
   }
-};*/
+};
 
-const checkTextInputNotEmpty = (email, password) => {
-  const alertMessage = " ";
-  console.log(email, password);
+const checkTextInputNotEmpty = (input) => {
+  console.log(input.email, input.pssw);
   if (
-    email === "" ||
-    email === "undefined" ||
-    email === "null" ||
-    email.length === 0 ||
-    password === "undefined" ||
-    password === "" ||
-    password === "null" ||
-    password.length === 0
+    input.email === "" ||
+    input.email === undefined ||
+    input.email === "null" ||
+    input.pssw === undefined ||
+    input.pssw === "" ||
+    input.pssw === "null"
   ) {
-    // errorControlLogin(8);
+    console.log("Fields are empty");
+    errorControlLogin(8);
     return false;
   } else {
-    //errorControlLogin(7);
+    console.log("Fields are not empty");
+    errorControlLogin(7);
     return true;
   }
 };
@@ -53,96 +50,79 @@ const useValidation = () => {
 };
 
 export default function Login({ navigation }) {
-  const [userEmail, setUserEmail] = React.useState([]);
-  const [userPassword, setUserPassword] = React.useState([]);
   const validation = useValidation();
   const url = `http://${process.env.REACT_APP_BASE_URL}/api/v2/`;
   const loginURL = url + "users/login";
   const { t } = useTranslation();
+  const [input, setInput] = React.useState({});
+  const navigate = useNavigate();
 
-  async function createPostLogin(userEmail, userPassword) {
-    console.log("El email es: " + userEmail + " El pass es : " + userPassword);
+  async function createPostLogin(input) {
+    console.log("El email es: " + input.email + " El pass es : " + input.pssw);
     console.log(loginURL);
     return await axios
-      .post(loginURL, {
-        email: userEmail,
-        password: userPassword,
-      })
+      .post(
+        `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/login?email=${input.email}&password=${input.pssw}`
+      )
       .then(function (response) {
+        console.log("true");
         return true;
       })
       .catch(function (error) {
-        console.log("Da error");
         console.log("Da error y el error es : " + error.response.data.message);
-        //errorControlLogin(2);
+        errorControlLogin(2);
         return false;
       });
   }
 
-  /*React.useEffect(() => {
-    const chargeView = navigation.addListener("focus", () => {
-      clearText();
+  const handleChange = (e) => {
+    console.log("change");
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
     });
-    return chargeView;
-  }, [navigation]);*/
-
-  const clearText = () => {
-    setUserEmail("");
-    setUserPassword("");
   };
 
   return (
     <div className="login-container">
       <img className="logo-container" src={logo} />
+
       <div>
         <label className="text-input-email"></label>
         <input
           id="Input"
-          type="email"
+          type="text"
           name="email"
-          classname="text-input"
           placeholder={t("Login.Email")}
-          onChangeText={(newtext) => setUserEmail(newtext)}
+          value={input.email || ""}
+          onChange={handleChange}
         />
       </div>
       <div>
         <label className="text-input-pssw"></label>
         <input
           id="Input"
-          type="string"
-          name="password"
+          type="text"
+          name="pssw"
           placeholder={t("Login.Password")}
-          onChangeText={(newtext) => setUserPassword(newtext)}
-          secureTextEntry
+          value={input.pssw || ""}
+          onChange={handleChange}
         />
       </div>
       <div className="login-button">
         <Button
-          variant="contained"
-          button-color={"#27CF10"}
+          mode="contained"
           onClick={() => {
-            if (validation.checkTextInputNotEmpty(userEmail, userPassword)) {
+            if (validation.checkTextInputNotEmpty(input)) {
               console.log("Entro y cumplo el primer check");
-              /* (async () => {
-                if (await createPostLogin(userEmail, userPassword))
-                  navigation.navigate("Home");
-              })();*/
+              (async () => {
+                if (await createPostLogin(input)) navigate("/ecoMobility/home");
+              })();
             }
           }}
         >
           {t("Login.Button")}
         </Button>
-      </div>
-      <div className="text-input-pssw">
-        {(() => {
-          if (!validation.checkTextInputNotEmpty(userEmail, userPassword)) {
-            return (
-              <Stack sx={{ width: "45%" }} spacing={2}>
-                <Alert severity="error">{t("Login.Warning")}</Alert>
-              </Stack>
-            );
-          }
-        })()}
       </div>
     </div>
   );
