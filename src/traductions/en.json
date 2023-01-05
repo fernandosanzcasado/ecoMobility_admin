@@ -16,7 +16,8 @@
     "Filter_By": "Filtrar per",
     "Email": "Administrator email",
     "Password": "Administrator password",
-    "Button": "Login"
+    "Button": "Login",
+    "Warning": "Fields can not be empty"
   },
   "Footer": {
     "Quote1": "Nothing dresses better than a clear conscience",

@@ -3,38 +3,47 @@ import "../App.css";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import logo from "../images/EcoMobilityIcon2.png";
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
-const errorControlLogin = (errorId) => {
-  const alertMessage = "";
+/*const errorControlLogin = (errorId) => {
   switch (errorId) {
     case 2:
       //Alert.alert(t("Error_Control.Incorrect_Pass"));
-      alertMessage = "Error_Control.Incorrect_Pass";
-      return alertMessage;
+      React.alertMessage("Error_Control.Incorrect_Pass");
       break;
     case 7:
       //Alert.alert(t("Error_Control.Login_Ok"));
-      alertMessage = "Error_Control.Login_Ok";
-      return alertMessage;
+      React.alertMessage("Error_Control.Login_Ok");
       break;
     case 8:
+      console.log("entra");
       //Alert.alert(t("Error_Control.Void_Fields"));
-      alertMessage = "Error_Control.Void_Fields";
-      return alertMessage;
+      Alert("Error_Control.Void_Fields");
       break;
     default:
       break;
   }
-};
+};*/
 
 const checkTextInputNotEmpty = (email, password) => {
   const alertMessage = " ";
-  if (email === "" || password === "") {
-    alertMessage = errorControlLogin(8);
+  console.log(email, password);
+  if (
+    email === "" ||
+    email === "undefined" ||
+    email === "null" ||
+    email.length === 0 ||
+    password === "undefined" ||
+    password === "" ||
+    password === "null" ||
+    password.length === 0
+  ) {
+    // errorControlLogin(8);
     return false;
   } else {
-    errorControlLogin(7);
+    //errorControlLogin(7);
     return true;
   }
 };
@@ -114,15 +123,26 @@ export default function Login({ navigation }) {
           onClick={() => {
             if (validation.checkTextInputNotEmpty(userEmail, userPassword)) {
               console.log("Entro y cumplo el primer check");
-              (async () => {
+              /* (async () => {
                 if (await createPostLogin(userEmail, userPassword))
                   navigation.navigate("Home");
-              })();
+              })();*/
             }
           }}
         >
           {t("Login.Button")}
         </Button>
+      </div>
+      <div className="text-input-pssw">
+        {(() => {
+          if (!validation.checkTextInputNotEmpty(userEmail, userPassword)) {
+            return (
+              <Stack sx={{ width: "45%" }} spacing={2}>
+                <Alert severity="error">{t("Login.Warning")}</Alert>
+              </Stack>
+            );
+          }
+        })()}
       </div>
     </div>
   );

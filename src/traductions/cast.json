@@ -16,7 +16,8 @@
     "Filter_By": "Filtrar per",
     "Email": "Email del administrador",
     "Password": "Contraseña del administrador",
-    "Button": "Iniciar sesión"
+    "Button": "Iniciar sesión",
+    "Warning": "Los campos no pueden estar vacíos"
   },
   "Footer": {
     "Quote1": "Nothing dresses better than a clear conscience",

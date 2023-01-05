@@ -16,7 +16,8 @@
     "Filter_By": "Filtrar per",
     "Email": "Email de l'administrador",
     "Password": "Contrasenya de l'administrador",
-    "Button": "Iniciar sessió"
+    "Button": "Iniciar sessió",
+    "Warning": "Els camps no poden estar buits"
   },
   "Footer": {
     "Quote1": "Nothing dresses better than a clear conscience",
