@@ -9,35 +9,40 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import ElectricStations from "./pages/ElectricStations";
 import BikeStations from "./pages/BikeStations";
+import Logout from "./pages/Logout";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />,
+  },
+  {
+    path: "/ecoMobility",
     element: <Layout />,
     children: [
       {
-        path: "/users",
+        path: "/ecoMobility/users",
         element: <Users />,
       },
       {
-        path: "/stations",
+        path: "/ecoMobility/stations",
         element: <Stations />,
       },
       {
-        path: "/home",
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/stations/electricStations",
+        path: "/ecoMobility/stations/electricStations",
         element: <ElectricStations />,
       },
       {
-        path: "/stations/bikeStations",
+        path: "/ecoMobility/stations/bikeStations",
         element: <BikeStations />,
+      },
+      {
+        path: "/ecoMobility/home",
+        element: <Home />,
+      },
+      {
+        path: "/ecoMobility/logout",
+        element: <Logout />,
       },
     ],
   },

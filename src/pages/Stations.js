@@ -8,8 +8,9 @@ import "../i18n.js";
 
 export default function Stations() {
   const navigate = useNavigate();
-  const handleClickElectric = () => navigate("/stations/electricStations");
-  const handleClickBike = () => navigate("/stations/bikeStations");
+  const handleClickElectric = () =>
+    navigate("/ecoMobility/stations/electricStations");
+  const handleClickBike = () => navigate("/ecoMobility/stations/bikeStations");
 
   const { t, i18n } = useTranslation();
 

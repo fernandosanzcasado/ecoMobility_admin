@@ -63,3 +63,40 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.login-container {
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+
+.logo-container {
+  margin-top: 0.5rem;
+  margin-left: 40rem;
+}
+
+.text-input-email {
+  margin-top: 6rem;
+  margin-left: 33rem;
+}
+
+.text-input-pssw {
+  margin-top: 2rem;
+  margin-left: 33rem;
+}
+
+#Input {
+  width: 30vw;
+  padding: 10px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  background-position: 8px 8px;
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  font-size: 1rem;
+}
+
+.login-button {
+  margin-top: 2rem;
+  margin-left: 47rem;
+}
