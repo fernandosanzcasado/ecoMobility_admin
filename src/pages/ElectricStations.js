@@ -3,8 +3,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { GridColumns, DataGrid, GridCellParams } from "@mui/x-data-grid";
 import axios from "axios";
-
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+import { Button, ButtonGroup, ButtonToolbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import "../i18n.js";
 
 const columns = [
   { field: "latitud" },
@@ -121,6 +123,8 @@ const localizedTextsMap = {
 
 export default function ElectricStations() {
   const [rows, setRows] = React.useState([]);
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   React.useEffect(() => {
     async function getEstaciones() {
@@ -140,24 +144,38 @@ export default function ElectricStations() {
     console.log(rows);
   }, [rows]);
 
+  const handleClickAddStation = () =>
+    navigate("/ecoMobility/stations/electricStations/addElectricStation");
+
   return (
-    <div
-      className="container"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
-      <Box
-        className="pt-3 pb-3 w-100"
-        sx={{
-          height: "500px",
-        }}
+    <div>
+      <div className="addStation-button">
+        <Button
+          style={{ background: "#59DE87" }}
+          variant="secondary"
+          onClick={handleClickAddStation}
+        >
+          {t("Stations.Add")}
+        </Button>
+      </div>
+      <div
+        className="container"
+        style={{ display: "flex", justifyContent: "center" }}
       >
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          localeText={localizedTextsMap}
-          pageSize={[50]}
-        />
-      </Box>
+        <Box
+          className="pt-3 pb-3 w-100"
+          sx={{
+            height: "500px",
+          }}
+        >
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            localeText={localizedTextsMap}
+            pageSize={[50]}
+          />
+        </Box>
+      </div>
     </div>
   );
 }

@@ -10,7 +10,23 @@
   "Stations": {
     "Title": "Estaciones",
     "Electric": "Estaciones eléctricas",
-    "Bike": "Estaciones bicicleta"
+    "Bike": "Estaciones bicicleta",
+    "Add": "Añadir nueva estación",
+    "AddElectricStation": "Añadir estación eléctrica",
+    "Direction": "Dirección de la estación",
+    "Municipality": "Municipio de la estación",
+    "Province": "Provincía de la estación",
+    "CodeProv": "Código de la província de la estación",
+    "Length": "Longitud de la posición de la estación",
+    "Latitude": "Latitut de la posición de la estación",
+    "Electricity": "Tipo de electricidad de la estación",
+    "Velocity": "Tipo de velocidad de la estación",
+    "Vehicle": "Tipo de vehículo de la estación",
+    "Connection": "Tipo de conexión de la estación",
+    "Promoter": "Promotor de la estación",
+    "Spots": "Número de plazas de la estación",
+    "Power": "Potencia de la estación",
+    "CreateStation": "Crear estación"
   },
   "Login": {
     "Filter_By": "Filtrar per",

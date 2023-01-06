@@ -100,3 +100,26 @@
   margin-top: 2rem;
   margin-left: 47rem;
 }
+
+.addStation-button {
+  padding-top: 3rem;
+  margin-left: 78%;
+}
+
+.addStations-title {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  padding-top: 2rem;
+  padding-left: 40%;
+}
+
+.text-input-addStation {
+  padding-left: 37%;
+  margin-bottom: 2rem;
+}
+
+.createStation-button {
+  padding-left: 50%;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
