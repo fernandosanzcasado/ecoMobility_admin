@@ -21,11 +21,6 @@ const columns = [
   { field: "tipoCorriente" },
   { field: "tipoVehiculo" },
   { field: "tipoVelocidad" },
-  // {
-  //   field: "dec",
-  //   type: "number",
-  //   valueFormatter: ({ value }) => `${value} °C`,
-  // },
 ];
 
 const localizedTextsMap = {
@@ -53,17 +48,10 @@ const localizedTextsMap = {
   toolbarFiltersTooltipActive: (count) =>
     count > 1 ? `${count} filtros activos` : `${count} filtro activo`,
 
-  // Quick filter toolbar field
-  // toolbarQuickFilterPlaceholder: 'Search…',
-  // toolbarQuickFilterLabel: 'Search',
-  // toolbarQuickFilterDeleteIconLabel: 'Clear',
-
   // Export selector toolbar button text
   toolbarExport: "Exportar",
   toolbarExportLabel: "Exportar",
   toolbarExportCSV: "Descargar como CSV",
-  // toolbarExportPrint: 'Print',
-  // toolbarExportExcel: 'Download as Excel',
 
   // Columns panel text
   columnsPanelTextFieldLabel: "Columna de búsqueda",
@@ -98,12 +86,6 @@ const localizedTextsMap = {
   filterOperatorOnOrBefore: "es en o anterior",
   filterOperatorIsEmpty: "está vacío",
   filterOperatorIsNotEmpty: "no esta vacío",
-  // filterOperatorIsAnyOf: 'is any of',
-
-  // Filter values text
-  // filterValueAny: 'any',
-  // filterValueTrue: 'true',
-  // filterValueFalse: 'false',
 
   // Column menu text
   columnMenuLabel: "Menú",
@@ -133,50 +115,8 @@ const localizedTextsMap = {
   footerTotalVisibleRows: (visibleCount, totalCount) =>
     `${visibleCount.toLocaleString()} de ${totalCount.toLocaleString()}`,
 
-  // Checkbox selection text
-  // checkboxSelectionHeaderName: 'Checkbox selection',
-  // checkboxSelectionSelectAllRows: 'Select all rows',
-  // checkboxSelectionUnselectAllRows: 'Unselect all rows',
-  // checkboxSelectionSelectRow: 'Select row',
-  // checkboxSelectionUnselectRow: 'Unselect row',
-
-  // Boolean cell text
-  // booleanCellTrueLabel: 'yes',
-  // booleanCellFalseLabel: 'no',
-
   // Actions cell more text
   actionsCellMore: "más",
-
-  // Column pinning text
-  // pinToLeft: 'Pin to left',
-  // pinToRight: 'Pin to right',
-  // unpin: 'Unpin',
-
-  // Tree Data
-  // treeDataGroupingHeaderName: 'Group',
-  // treeDataExpand: 'see children',
-  // treeDataCollapse: 'hide children',
-
-  // Grouping columns
-  // groupingColumnHeaderName: 'Group',
-  // groupColumn: name => `Group by ${name}`,
-  // unGroupColumn: name => `Stop grouping by ${name}`,
-
-  // Master/detail
-  // detailPanelToggle: 'Detail panel toggle',
-  // expandDetailPanel: 'Expand',
-  // collapseDetailPanel: 'Collapse',
-
-  // Row reordering text
-  // rowReorderingHeaderName: 'Row reordering',
-
-  // Aggregation
-  // aggregationMenuItemHeader: 'Aggregation',
-  // aggregationFunctionLabelSum: 'sum',
-  // aggregationFunctionLabelAvg: 'avg',
-  // aggregationFunctionLabelMin: 'min',
-  // aggregationFunctionLabelMax: 'max',
-  // aggregationFunctionLabelSize: 'size',
 };
 
 export default function ElectricStations() {
@@ -188,7 +128,6 @@ export default function ElectricStations() {
         const res = await axios.get(
           `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
         );
-        // console.log(res.data);
         setRows(res.data);
       } catch (error) {
         console.log(error);

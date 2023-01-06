@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import ElectricStations from "./pages/ElectricStations";
 import BikeStations from "./pages/BikeStations";
+import Logout from "./pages/Logout";
 
 const router = createBrowserRouter([
   {
@@ -28,16 +29,20 @@ const router = createBrowserRouter([
         element: <Stations />,
       },
       {
-        path: "/ecoMobility/home",
-        element: <Home />,
-      },
-      {
         path: "/ecoMobility/stations/electricStations",
         element: <ElectricStations />,
       },
       {
         path: "/ecoMobility/stations/bikeStations",
         element: <BikeStations />,
+      },
+      {
+        path: "/ecoMobility/home",
+        element: <Home />,
+      },
+      {
+        path: "/ecoMobility/logout",
+        element: <Logout />,
       },
     ],
   },

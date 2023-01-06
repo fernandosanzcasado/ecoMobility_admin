@@ -33,7 +33,11 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/home" className="navbar-logo" onClick={closeMenu}>
+          <Link
+            to="/ecoMobility/home"
+            className="navbar-logo"
+            onClick={closeMenu}
+          >
             ecoMobility <i className="fab fa-typo3" />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
@@ -41,21 +45,43 @@ function NavBar() {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link to="/home" className="nav-links" onClick={closeMenu}>
+              <Link
+                to="/ecoMobility/home"
+                className="nav-links"
+                onClick={closeMenu}
+              >
                 {t("NavBar.Home")}
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/users" className="nav-links" onClick={closeMenu}>
+              <Link
+                to="/ecoMobility/users"
+                className="nav-links"
+                onClick={closeMenu}
+              >
                 {t("NavBar.Users")}
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/stations" className="nav-links" onClick={closeMenu}>
+              <Link
+                to="/ecoMobility/stations"
+                className="nav-links"
+                onClick={closeMenu}
+              >
                 {t("NavBar.Stations")}
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                to="/ecoMobility/logout"
+                className="nav-links-mobile"
+                onClick={closeMenu}
+              >
+                Logout
+              </Link>
+            </li>
           </ul>
+          {button && <Button buttonStyle="btn--outline">LOGOUT</Button>}
         </div>
       </nav>
     </>

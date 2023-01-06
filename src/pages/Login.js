@@ -9,16 +9,10 @@ import Button from "@mui/material/Button";
 const errorControlLogin = (errorId) => {
   switch (errorId) {
     case 2:
-      //Alert.alert(t("Error_Control.Incorrect_Pass"));
-      alert("Error_Control.Incorrect_Pass");
-      break;
-    case 7:
-      //Alert.alert(t("Error_Control.Login_Ok"));
-      alert("Error_Control.Login_Ok");
+      alert("Incorrect_Password");
       break;
     case 8:
-      //Alert.alert(t("Error_Control.Void_Fields"));
-      alert("Error_Control.Void_Fields");
+      alert("Error: Void_Fields");
       break;
     default:
       break;
@@ -40,7 +34,6 @@ const checkTextInputNotEmpty = (input) => {
     return false;
   } else {
     console.log("Fields are not empty");
-    errorControlLogin(7);
     return true;
   }
 };
@@ -51,28 +44,37 @@ const useValidation = () => {
 
 export default function Login({ navigation }) {
   const validation = useValidation();
-  const url = `http://${process.env.REACT_APP_BASE_URL}/api/v2/`;
-  const loginURL = url + "users/login";
   const { t } = useTranslation();
   const [input, setInput] = React.useState({});
   const navigate = useNavigate();
 
   async function createPostLogin(input) {
-    console.log("El email es: " + input.email + " El pass es : " + input.pssw);
-    console.log(loginURL);
-    return await axios
-      .post(
-        `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/login?email=${input.email}&password=${input.pssw}`
-      )
-      .then(function (response) {
-        console.log("true");
-        return true;
-      })
-      .catch(function (error) {
-        console.log("Da error y el error es : " + error.response.data.message);
-        errorControlLogin(2);
-        return false;
-      });
+    try {
+      console.log(
+        "El email es: " + input.email + " El pass es : " + input.pssw
+      );
+      const result = await axios.post(
+        `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/login`,
+        {
+          email: input.email,
+          password: input.pssw,
+        }
+      );
+      /* const result = await axios.post(
+        `http://localhost:3000/api/v2/users/login`,
+        {
+          email: input.email,
+          password: input.pssw,
+        }
+      );*/
+      console.log("Surto");
+      console.log(result);
+      return true;
+    } catch (error) {
+      console.log("Error" + error);
+      errorControlLogin(2);
+      return false;
+    }
   }
 
   const handleChange = (e) => {
