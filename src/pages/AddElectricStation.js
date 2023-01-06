@@ -12,7 +12,9 @@ const errorControlLogin = (errorId) => {
       alert("Creation error");
       break;
     case 8:
-      alert("Error: Void_Fields");
+      alert(
+        "Error: Required fields are empty: Direction, Length, Latitude, Municipality and CodeProv"
+      );
       break;
     default:
       break;
@@ -23,30 +25,14 @@ const checkTextInputNotEmpty = (input) => {
   if (
     input.direction === "" ||
     input.municipality === "" ||
-    input.province === "" ||
     input.codeProv === "" ||
     input.length === "" ||
     input.latitude === "" ||
-    input.electricity === "" ||
-    input.velocity === "" ||
-    input.vehicle === "" ||
-    input.connection === "" ||
-    input.promoter === "" ||
-    input.spots === "" ||
-    input.power === "" ||
     input.direction === undefined ||
     input.municipality === undefined ||
-    input.province === undefined ||
     input.codeProv === undefined ||
     input.length === undefined ||
-    input.latitude === undefined ||
-    input.electricity === undefined ||
-    input.velocity === undefined ||
-    input.vehicle === undefined ||
-    input.connection === undefined ||
-    input.promoter === undefined ||
-    input.spots === undefined ||
-    input.power === undefined
+    input.latitude === undefined
   ) {
     console.log(
       input.direction,
@@ -63,7 +49,7 @@ const checkTextInputNotEmpty = (input) => {
       input.spots,
       input.power
     );
-    console.log("Fields are empty");
+    console.log("Required fields are empty");
     errorControlLogin(8);
     return false;
   } else {
@@ -126,7 +112,7 @@ export default function AddElectricStation() {
         }
       );*/
       const result = await axios.post(
-        `http://localhost:3000/api/v2/estaciones`,
+        `http://localhost:3000/api/v2/estaciones/`,
         {
           direccion: input.direction,
           latitud: input.latitude,
