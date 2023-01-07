@@ -53,20 +53,23 @@ export default function Login({ navigation }) {
       console.log(
         "El email es: " + input.email + " El pass es : " + input.pssw
       );
-      const result = await axios.post(
+      /*const result = await axios.post(
         `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/login`,
         {
           email: input.email,
           password: input.pssw,
         }
-      );
-      /* const result = await axios.post(
+      );*/
+      const result = await axios.post(
         `http://localhost:3000/api/v2/users/login`,
         {
           email: input.email,
           password: input.pssw,
+        },
+        {
+          withCredentials: true,
         }
-      );*/
+      );
       console.log("Surto");
       console.log(result);
       return true;

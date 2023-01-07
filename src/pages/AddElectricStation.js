@@ -127,7 +127,8 @@ export default function AddElectricStation() {
           promotor: input.promoter,
           potencia: input.power,
           nPlaces: input.spots,
-        }
+        },
+        { withCredentials: true }
       );
       console.log(result);
       return true;
