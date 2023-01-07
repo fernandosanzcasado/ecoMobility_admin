@@ -12,6 +12,8 @@
     "Electric": "Electric Stations",
     "Bike": "Bike Stations",
     "Add": "Add new station",
+    "Delete": "Delete station",
+    "Update": "Update station",
     "AddElectricStation": "Add electric station",
     "Direction": "Street of the station",
     "Municipality": "Municipality of the station",
@@ -26,7 +28,9 @@
     "Promoter": "Promoter of the station",
     "Spots": "Spots number of the station",
     "Power": "Power of the station",
-    "CreateStation": "Create station"
+    "CreateStation": "Create station",
+    "Info": "You can see and modify the electric stations but only see the bike stations as they use real time information",
+    "Id": "Id of the station"
   },
   "Login": {
     "Filter_By": "Filtrar per",

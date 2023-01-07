@@ -120,7 +120,8 @@ export default function ElectricStations() {
     async function getEstaciones() {
       try {
         const res = await axios.get(
-          `http://${process.env.REACT_APP_BASE_URL}/api/v2/info`
+          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/info`
+          "http://localhost:3000/api/v2/info"
         );
         console.log(res.data);
         setRows(res.data);

@@ -12,6 +12,8 @@
     "Electric": "Estaciones eléctricas",
     "Bike": "Estaciones bicicleta",
     "Add": "Añadir nueva estación",
+    "Delete": "Eliminar estación",
+    "Update": "Actualizar estación",
     "AddElectricStation": "Añadir estación eléctrica",
     "Direction": "Dirección de la estación",
     "Municipality": "Municipio de la estación",
@@ -26,7 +28,9 @@
     "Promoter": "Promotor de la estación",
     "Spots": "Número de plazas de la estación",
     "Power": "Potencia de la estación",
-    "CreateStation": "Crear estación"
+    "CreateStation": "Crear estación",
+    "Info": "Puedes ver y modificar las estaciones eléctricas, pero solo ver las estaciones de bicicleta ya que estas usan información en tiempo real",
+    "Id": "Id de la estación"
   },
   "Login": {
     "Filter_By": "Filtrar per",
