@@ -188,7 +188,8 @@ export default function ElectricStations() {
     async function getEstaciones() {
       try {
         const res = await axios.get(
-          `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
+          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
+          `http://localhost:3000/api/v2/estaciones`
         );
         setRows(res.data);
       } catch (error) {
@@ -244,7 +245,18 @@ export default function ElectricStations() {
       </div>
       <div className="electricStations-button">
         <ButtonGroup aria-label="First group">
-          <Button style={{ background: "#59DE87" }} variant="secondary">
+          <Button
+            style={{ background: "#59DE87" }}
+            variant="secondary"
+            onClick={() => {
+              if (validation.checkTextInputNotEmpty(input)) {
+                console.log("Update station");
+                navigate(
+                  `/ecoMobility/stations/electricStations/updateStation/${input.id}`
+                );
+              }
+            }}
+          >
             {t("Stations.Update")}
           </Button>
           <Button

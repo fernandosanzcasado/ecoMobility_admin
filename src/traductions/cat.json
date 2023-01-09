@@ -29,8 +29,10 @@
     "Spots": "Número de places de l'estació",
     "Power": "Potencia de l'estació",
     "CreateStation": "Crear estació",
+    "UpdateStation": "Actualitzar estació",
     "Info": "Pots veure i modificar les estacions elèctriques, però només veure les estacions de bicicleta ja que aquestes usen informació en temps real",
-    "Id": "Id de l'estació"
+    "Id": "Id de l'estació",
+    "UpdateElectricStation": "Actualitzar estació elèctrica"
   },
   "Login": {
     "Filter_By": "Filtrar per",

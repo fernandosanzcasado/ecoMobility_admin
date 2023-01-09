@@ -29,8 +29,10 @@
     "Spots": "Spots number of the station",
     "Power": "Power of the station",
     "CreateStation": "Create station",
+    "UpdateStation": "Update station",
     "Info": "You can see and modify the electric stations but only see the bike stations as they use real time information",
-    "Id": "Id of the station"
+    "Id": "Id of the station",
+    "UpdateElectricStation": "Update electric station"
   },
   "Login": {
     "Filter_By": "Filtrar per",

@@ -107,11 +107,12 @@ export default function Login({ navigation }) {
         <label className="text-input-pssw"></label>
         <input
           id="Input"
-          type="text"
+          type="password"
           name="pssw"
           placeholder={t("Login.Password")}
           value={input.pssw || ""}
           onChange={handleChange}
+          secureTextEntry
         />
       </div>
       <div className="login-button">

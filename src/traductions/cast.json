@@ -29,8 +29,10 @@
     "Spots": "Número de plazas de la estación",
     "Power": "Potencia de la estación",
     "CreateStation": "Crear estación",
+    "UpdateStation": "Actualizar estación",
     "Info": "Puedes ver y modificar las estaciones eléctricas, pero solo ver las estaciones de bicicleta ya que estas usan información en tiempo real",
-    "Id": "Id de la estación"
+    "Id": "Id de la estación",
+    "UpdateElectricStation": "Actualizar estación eléctrica"
   },
   "Login": {
     "Filter_By": "Filtrar per",

@@ -11,6 +11,7 @@ import ElectricStations from "./pages/ElectricStations";
 import BikeStations from "./pages/BikeStations";
 import Logout from "./pages/Logout";
 import AddElectricStation from "./pages/AddElectricStation";
+import UpdateStation from "./pages/UpdateStation";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/ecoMobility/stations/electricStations/addElectricStation",
         element: <AddElectricStation />,
+      },
+      {
+        path: "/ecoMobility/stations/electricStations/updateStation/:id",
+        element: <UpdateStation />,
       },
       {
         path: "/ecoMobility/stations/bikeStations",
