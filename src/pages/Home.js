@@ -17,6 +17,7 @@ export default function Home() {
 
   const [numStations, setNumStations] = React.useState([]);
   const [numUsers, setNumUsers] = React.useState([]);
+  const [numBikes, setNumBikes] = React.useState([]);
 
   React.useEffect(() => {
     async function getNumEstaciones() {
@@ -24,7 +25,6 @@ export default function Home() {
         const res = await axios.get(
           `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/count`
         );
-        // console.log(res.data);
         setNumStations(res.data);
       } catch (error) {
         console.log(error);
@@ -41,9 +41,11 @@ export default function Home() {
     async function getNumUsers() {
       try {
         const res = await axios.get(
-          `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/admin/getAllUsers/count`
+          "http://localhost:3000/api/v2/users/admin/getAllUsers/count",
+          {
+            withCredentials: true,
+          }
         );
-        // console.log(res.data);
         setNumUsers(res.data);
       } catch (error) {
         console.log(error);
@@ -55,6 +57,24 @@ export default function Home() {
   React.useEffect(() => {
     console.log(numUsers);
   }, [numUsers]);
+
+  React.useEffect(() => {
+    async function getNumBikes() {
+      try {
+        const res = await axios.get(
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/bicing/count`
+        );
+        setNumBikes(res.data.count);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getNumBikes();
+  }, []);
+
+  React.useEffect(() => {
+    console.log(numBikes);
+  }, [numBikes]);
 
   return (
     <div>
@@ -78,7 +98,7 @@ export default function Home() {
         <Card style={{ width: "18rem", background: "#59DE87" }}>
           <Card.Body>
             <Card.Title>{t("Home.Bike")}</Card.Title>
-            <Card.Text>Number of bike stations</Card.Text>
+            <Card.Text>{numBikes}</Card.Text>
           </Card.Body>
         </Card>
       </div>

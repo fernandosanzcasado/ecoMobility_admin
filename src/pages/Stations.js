@@ -33,6 +33,7 @@ export default function Stations() {
           {t("Stations.Bike")}
         </Button>
       </ButtonGroup>
+      <div className="stations-info">{t("Stations.Info")}</div>
     </div>
   );
 }

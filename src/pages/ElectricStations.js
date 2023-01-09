@@ -3,20 +3,22 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { GridColumns, DataGrid, GridCellParams } from "@mui/x-data-grid";
 import axios from "axios";
-
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+import { Button, ButtonGroup, ButtonToolbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import "../i18n.js";
 
 const columns = [
+  { field: "id" },
   { field: "latitud" },
+  { field: "longitud" },
   { field: "codiProv" },
   { field: "direccion" },
-  { field: "id" },
-  { field: "longitud" },
   { field: "municipio" },
+  { field: "provincia" },
   { field: "nPlazas" },
   { field: "potencia" },
   { field: "promotor" },
-  { field: "provincia" },
   { field: "tipoConexion" },
   { field: "tipoCorriente" },
   { field: "tipoVehiculo" },
@@ -119,14 +121,75 @@ const localizedTextsMap = {
   actionsCellMore: "más",
 };
 
+const errorControl = (errorId) => {
+  switch (errorId) {
+    case 2:
+      alert("Empty id field");
+      break;
+    case 3:
+      alert("Error in deleting");
+      break;
+    default:
+      break;
+  }
+};
+
+const checkTextInputNotEmpty = (input) => {
+  if (input.id === "" || input.id === undefined) {
+    console.log(input.id);
+    console.log("Required fields are empty");
+    errorControl(2);
+    return false;
+  } else {
+    console.log("Fields are not empty");
+    return true;
+  }
+};
+
+const useValidation = () => {
+  return { checkTextInputNotEmpty };
+};
+
 export default function ElectricStations() {
   const [rows, setRows] = React.useState([]);
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const [input, setInput] = React.useState({});
+  const validation = useValidation();
+
+  const handleChange = (e) => {
+    console.log("change");
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleClickAddStation = () =>
+    navigate("/ecoMobility/stations/electricStations/addElectricStation");
+
+  async function deleteStation(input) {
+    try {
+      console.log(input.id);
+      const result = await axios.delete(
+        `http://localhost:3000/api/v2/estaciones/info/${input.id}`,
+        { withCredentials: true }
+      );
+      console.log(result);
+      return true;
+    } catch (error) {
+      console.log("Error" + error);
+      errorControl(3);
+      return false;
+    }
+  }
 
   React.useEffect(() => {
     async function getEstaciones() {
       try {
         const res = await axios.get(
-          `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
+          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
+          `http://localhost:3000/api/v2/estaciones`
         );
         setRows(res.data);
       } catch (error) {
@@ -141,23 +204,78 @@ export default function ElectricStations() {
   }, [rows]);
 
   return (
-    <div
-      className="container"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
-      <Box
-        className="pt-3 pb-3 w-100"
-        sx={{
-          height: "500px",
-        }}
+    <div>
+      <div className="addStation-button">
+        <Button
+          style={{ background: "#59DE87" }}
+          variant="secondary"
+          onClick={handleClickAddStation}
+        >
+          {t("Stations.Add")}
+        </Button>
+      </div>
+      <div
+        className="container"
+        style={{ display: "flex", justifyContent: "center" }}
       >
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          localeText={localizedTextsMap}
-          pageSize={[50]}
+        <Box
+          className="pt-2 pb-2 w-100"
+          sx={{
+            height: "500px",
+          }}
+        >
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            localeText={localizedTextsMap}
+            pageSize={[50]}
+          />
+        </Box>
+      </div>
+      <div>
+        <label className="text-input-addStation"></label>
+        <input
+          id="Input"
+          type="text"
+          name="id"
+          placeholder={t("Stations.Id")}
+          value={input.id || ""}
+          onChange={handleChange}
         />
-      </Box>
+      </div>
+      <div className="electricStations-button">
+        <ButtonGroup aria-label="First group">
+          <Button
+            style={{ background: "#59DE87" }}
+            variant="secondary"
+            onClick={() => {
+              if (validation.checkTextInputNotEmpty(input)) {
+                console.log("Update station");
+                navigate(
+                  `/ecoMobility/stations/electricStations/updateStation/${input.id}`
+                );
+              }
+            }}
+          >
+            {t("Stations.Update")}
+          </Button>
+          <Button
+            style={{ background: "#59DE87" }}
+            variant="secondary"
+            onClick={() => {
+              if (validation.checkTextInputNotEmpty(input)) {
+                console.log("Delete station");
+                (async () => {
+                  if (await deleteStation(input))
+                    navigate("/ecoMobility/stations");
+                })();
+              }
+            }}
+          >
+            {t("Stations.Delete")}
+          </Button>
+        </ButtonGroup>
+      </div>
     </div>
   );
 }
