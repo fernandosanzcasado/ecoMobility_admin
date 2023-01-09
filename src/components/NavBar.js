@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
-import { Button } from "./Button.js";
 
 import { useTranslation } from "react-i18next";
 import "../i18n.js";
+import axios from "axios";
+
+import { Button, ButtonGroup, ButtonToolbar } from "react-bootstrap";
 
 function NavBar() {
   const { t, i18n } = useTranslation();
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const navigate = useNavigate();
 
   const handleClick = () => setClick(!click);
   const closeMenu = () => setClick(false);
@@ -28,6 +32,25 @@ function NavBar() {
   }, []);
 
   window.addEventListener("resize", showButton);
+
+  async function logout() {
+    try {
+      console.log("logout");
+      const result = await axios.post(
+        `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/logout`,
+        {},
+        { withCredentials: true }
+      );
+    } catch (error) {
+      console.log("Error" + error);
+      alert("Error logout");
+    }
+  }
+
+  async function handleLogout() {
+    await logout();
+    navigate("/");
+  }
 
   return (
     <>
@@ -72,16 +95,17 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/ecoMobility/logout"
-                className="nav-links-mobile"
-                onClick={closeMenu}
+              <Button
+                mode="contained"
+                onClick={() => {
+                  console.log("Entro y cumplo el primer check");
+                  handleLogout();
+                }}
               >
-                Logout
-              </Link>
+                {t("NavBar.Logout")}
+              </Button>
             </li>
           </ul>
-          {button && <Button buttonStyle="btn--outline">LOGOUT</Button>}
         </div>
       </nav>
     </>

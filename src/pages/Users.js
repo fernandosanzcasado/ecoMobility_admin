@@ -162,8 +162,7 @@ export default function Users() {
     async function getUsuarios() {
       try {
         const res = await axios.get(
-          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
-          `http://localhost:3000/api/v2/users/admin/getAllUsers/`,
+          `http:///${process.env.REACT_APP_BASE_URL}/api/v2/users/admin/getAllUsers/`,
           { withCredentials: true }
         );
 

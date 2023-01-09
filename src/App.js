@@ -9,7 +9,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import ElectricStations from "./pages/ElectricStations";
 import BikeStations from "./pages/BikeStations";
-import Logout from "./pages/Logout";
 import AddElectricStation from "./pages/AddElectricStation";
 import UpdateStation from "./pages/UpdateStation";
 import UpdateUser from "./pages/UpdateUser";
@@ -54,10 +53,6 @@ const router = createBrowserRouter([
       {
         path: "/ecoMobility/home",
         element: <Home />,
-      },
-      {
-        path: "/ecoMobility/logout",
-        element: <Logout />,
       },
     ],
   },

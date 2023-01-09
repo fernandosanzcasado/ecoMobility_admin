@@ -61,7 +61,7 @@ export default function Login({ navigation }) {
         }
       );*/
       const result = await axios.post(
-        `http://localhost:3000/api/v2/users/login`,
+        `http:///${process.env.REACT_APP_BASE_URL}/api/v2/users/login`,
         {
           email: input.email,
           password: input.pssw,

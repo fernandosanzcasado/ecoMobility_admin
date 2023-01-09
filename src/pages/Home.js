@@ -23,8 +23,7 @@ export default function Home() {
     async function getNumEstaciones() {
       try {
         const res = await axios.get(
-          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/count`
-          `http://localhost:3000/api/v2/estaciones/count`
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/count`
         );
         setNumStations(res.data);
       } catch (error) {
@@ -42,7 +41,7 @@ export default function Home() {
     async function getNumUsers() {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/v2/users/admin/getAllUsers/count",
+          `http:///${process.env.REACT_APP_BASE_URL}/api/v2/users/admin/getAllUsers/count`,
           {
             withCredentials: true,
           }
@@ -63,8 +62,7 @@ export default function Home() {
     async function getNumBikes() {
       try {
         const res = await axios.get(
-          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/bicing/count`
-          `http://localhost:3000/api/v2/bicing/count`
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/bicing/count`
         );
         setNumBikes(res.data.count);
       } catch (error) {

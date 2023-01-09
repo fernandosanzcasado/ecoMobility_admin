@@ -8,7 +8,14 @@
     "Write_Current_Pass": "Introdueix la teva contrasenya actual",
     "Update": "Actualizar usuario",
     "Title": "Usuarios",
-    "Id": "Email del usuario"
+    "Id": "Email del usuario",
+    "Email": "Dirección de email del usuario",
+    "Name": "Nombre del usuario",
+    "Surnames": "Apellidos del usuario",
+    "isSuperuser": "El usuario es administrador? true/false",
+    "isBlocked": "El usuario está bloqueado? true/false",
+    "dateJoined": "Fecha de creación de la cuenta del usuario",
+    "UpdateTitle": "Actualizar usuario"
   },
   "Stations": {
     "Title": "Estaciones",
@@ -53,6 +60,7 @@
   "NavBar": {
     "Stations": "Estaciones",
     "Home": "Página principal",
-    "Users": "Usuarios"
+    "Users": "Usuarios",
+    "Logout": "Cerrar sesión"
   }
 }

@@ -9,7 +9,7 @@ import axios from "axios";
 const errorControlLogin = (errorId) => {
   switch (errorId) {
     case 2:
-      alert("Creation error");
+      alert("Update error");
       break;
     default:
       break;
@@ -20,7 +20,7 @@ export default function UpdateUser() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [input, setInput] = React.useState({});
-  const [stations, setStations] = React.useState([]);
+  const [users, setUsers] = React.useState([]);
   let { email } = useParams();
 
   const handleChange = (e) => {
@@ -31,16 +31,29 @@ export default function UpdateUser() {
     });
   };
 
+  const handleChangeCheckbox = (e) => {
+    console.log("change");
+    setInput({
+      ...input,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
   React.useEffect(() => {
     async function getUser() {
       try {
         console.log(email);
 
         const result = await axios.get(
-          `http://localhost:3000/api/v2/estaciones/info/${email}`,
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/admin/getUser/${email}`,
           { withCredentials: true }
         );
-        setStations(result.data);
+        input.name = result.data.name;
+        input.surnames = result.data.surnames;
+        input.isBlocked = result.data.isBlocked;
+        input.isSuperuser = result.data.isSuperuser;
+
+        setUsers(result.data);
       } catch (error) {
         console.log("Error" + error);
         errorControlLogin(2);
@@ -50,52 +63,32 @@ export default function UpdateUser() {
   }, []);
 
   React.useEffect(() => {
-    console.log(stations);
-  }, [stations]);
+    console.log(users);
+  }, [users]);
 
-  async function updateElectricStation(input) {
+  async function updateUser(input) {
     try {
       console.log(
-        input.direction,
-        input.municipality,
-        input.province,
-        input.codeProv,
-        input.length,
-        input.latitude,
-        input.electricity,
-        input.velocity,
-        input.vehicle,
-        input.connection,
-        input.promoter,
-        input.spots,
-        input.power
+        input.name,
+        input.surnames,
+        input.isSuperuser,
+        input.isBlocked
       );
 
-      console.log(email);
-
       const result = await axios.put(
-        `http://localhost:3000/api/v2/estaciones/info/${email}`,
+        `http:///${process.env.REACT_APP_BASE_URL}/api/v2/users/admin/updateUser/${email}`,
         {
-          direccion: input.direction,
-          latitud: input.latitude,
-          longitud: input.length,
-          municipio: input.municipality,
-          provincia: input.province,
-          codiProv: input.codeProv,
-          tipoCorriente: input.electricity,
-          tipoVelocidad: input.velocity,
-          tipoVehiculo: input.vehicle,
-          tipoConexion: input.connection,
-          promotor: input.promoter,
-          potencia: input.power,
-          nPlaces: input.spots,
+          surnames: input.surnames,
+          isBlocked: input.isBlocked,
+          isSuperuser: input.isSuperuser,
+          name: input.name,
         },
         { withCredentials: true }
       );
       console.log(result);
       return true;
     } catch (error) {
-      console.log("Error" + error);
+      console.log("Error" + error.response.data);
       errorControlLogin(2);
       return false;
     }
@@ -103,18 +96,15 @@ export default function UpdateUser() {
 
   return (
     <div>
-      <h1 className="addStations-title">
-        {t("Stations.UpdateElectricStation")}
-      </h1>
-
+      <h1 className="addStations-title">{t("Users.UpdateTitle")}</h1>
       <div>
         <label className="text-input-addStation"></label>
         <input
           id="Input"
           type="text"
-          name="direction"
-          placeholder={t("Stations.Direction")}
-          value={input.direction || stations.direccion || ""}
+          name="name"
+          placeholder={t("Users.Name")}
+          value={input.name || users.name || ""}
           onChange={handleChange}
         />
       </div>
@@ -123,9 +113,9 @@ export default function UpdateUser() {
         <input
           id="Input"
           type="text"
-          name="municipality"
-          placeholder={t("Stations.Municipality")}
-          value={input.municipality || stations.municipio || ""}
+          name="surnames"
+          placeholder={t("Users.Surnames")}
+          value={input.surnames || users.surnames || ""}
           onChange={handleChange}
         />
       </div>
@@ -134,135 +124,34 @@ export default function UpdateUser() {
         <input
           id="Input"
           type="text"
-          name="province"
-          placeholder={t("Stations.Province")}
-          value={input.province || stations.provincia || ""}
+          name="isSuperuser"
+          value={input.isSuperuser || users.isSuperuser || ""}
+          placeholder={t("Users.isSuperuser")}
           onChange={handleChange}
         />
       </div>
       <div>
-        <label className="text-input-addStation"></label>
+        <label className="text-input-addStation"> </label>
         <input
           id="Input"
           type="text"
-          name="codeProv"
-          placeholder={t("Stations.CodeProv")}
-          value={input.codeProv || stations.codiProv || ""}
+          name="isBlocked"
+          placeholder={t("Users.isBlocked")}
+          value={input.isBlocked || users.isBlocked || ""}
           onChange={handleChange}
         />
       </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="text"
-          name="length"
-          placeholder={t("Stations.Length")}
-          value={input.length || stations.longitud || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="text"
-          name="latitude"
-          placeholder={t("Stations.Latitude")}
-          value={input.latitude || stations.latitud || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="text"
-          name="electricity"
-          placeholder={t("Stations.Electricity")}
-          value={input.electricity || stations.tipoCorriente || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="text"
-          name="velocity"
-          placeholder={t("Stations.Velocity")}
-          value={input.velocity || stations.tipoVelocidad || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="text"
-          name="vehicle"
-          placeholder={t("Stations.Vehicle")}
-          value={input.vehicle || stations.tipoVehiculo || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="text"
-          name="connection"
-          placeholder={t("Stations.Connection")}
-          value={input.connection || stations.tipoConexion || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="text"
-          name="promoter"
-          placeholder={t("Stations.Promoter")}
-          value={input.promoter || stations.promotor || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="number"
-          name="spots"
-          placeholder={t("Stations.Spots")}
-          value={input.spots || stations.nPlaces || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-input-addStation"></label>
-        <input
-          id="Input"
-          type="number"
-          name="power"
-          placeholder={t("Stations.Power")}
-          value={input.power || stations.potencia || ""}
-          onChange={handleChange}
-        />
-      </div>
-
       <div className="createStation-button">
         <Button
           mode="contained"
           onClick={() => {
             console.log("Entro y cumplo el primer check");
             (async () => {
-              if (await updateElectricStation(input))
-                navigate("/ecoMobility/stations/electricStations");
+              if (await updateUser(input)) navigate("/ecoMobility/users");
             })();
           }}
         >
-          {t("Stations.UpdateStation")}
+          {t("Users.Update")}
         </Button>
       </div>
     </div>

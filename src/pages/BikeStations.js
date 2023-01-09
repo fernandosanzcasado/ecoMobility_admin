@@ -124,8 +124,7 @@ export default function ElectricStations() {
     async function getEstaciones() {
       try {
         const res = await axios.get(
-          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/info`
-          `http://localhost:3000/api/v2/bicing/info`
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/bicing/info`
         );
         const formattedData = res.data.map((item) => {
           return {
