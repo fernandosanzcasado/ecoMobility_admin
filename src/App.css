@@ -133,3 +133,29 @@
   padding-left: 45%;
   padding-bottom: 5%;
 }
+
+.electric-title {
+  margin-bottom: 15px;
+  font-size: 3rem;
+  padding-top: 3%;
+  padding-left: 40%;
+}
+
+.container-bikes {
+  padding-left: 22%;
+  padding-right: 22%;
+  padding-bottom: 2%;
+}
+
+.container-users {
+  padding-left: 24%;
+  padding-right: 24%;
+  padding-bottom: 2%;
+}
+
+.users-title {
+  margin-bottom: 15px;
+  font-size: 3rem;
+  padding-top: 3%;
+  padding-left: 45%;
+}

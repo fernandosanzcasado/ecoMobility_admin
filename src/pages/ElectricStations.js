@@ -205,6 +205,7 @@ export default function ElectricStations() {
 
   return (
     <div>
+      <h1 className="electric-title">{t("Stations.ElectricTitle")}</h1>
       <div className="addStation-button">
         <Button
           style={{ background: "#59DE87" }}
