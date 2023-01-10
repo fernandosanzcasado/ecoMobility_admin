@@ -94,16 +94,18 @@ function NavBar() {
                 {t("NavBar.Stations")}
               </Link>
             </li>
-            <li className="nav-item">
-              <Button
-                mode="contained"
-                onClick={() => {
-                  console.log("Entro y cumplo el primer check");
-                  handleLogout();
-                }}
-              >
-                {t("NavBar.Logout")}
-              </Button>
+            <li className="button-style">
+              <li className="nav-item">
+                <Button
+                  mode="contained"
+                  onClick={() => {
+                    console.log("Entro y cumplo el primer check");
+                    handleLogout();
+                  }}
+                >
+                  {t("NavBar.Logout")}
+                </Button>
+              </li>
             </li>
           </ul>
         </div>
