@@ -159,3 +159,7 @@
     transition: 250ms;
   }
 }
+
+.button-style {
+  padding-top: 30%;
+}

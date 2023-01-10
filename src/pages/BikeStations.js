@@ -3,12 +3,15 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { GridColumns, DataGrid, GridCellParams } from "@mui/x-data-grid";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+import "../i18n.js";
 
 const columns = [
   { field: "id" },
   { field: "lat" },
   { field: "lon" },
-  { field: "numBikesAvailableTypes" },
+  { field: "ebikeAvailable" },
+  { field: "mechanicalAvailable" },
   { field: "status" },
   { field: "numDocksAvailable" },
   { field: "street" },
@@ -115,16 +118,30 @@ const localizedTextsMap = {
 
 export default function ElectricStations() {
   const [rows, setRows] = React.useState([]);
+  const { t, i18n } = useTranslation();
 
   React.useEffect(() => {
     async function getEstaciones() {
       try {
         const res = await axios.get(
-          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/info`
-          `http://localhost:3000/api/v2/bicing/info`
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/bicing/info`
         );
-        console.log(res.data);
-        setRows(res.data);
+        const formattedData = res.data.map((item) => {
+          return {
+            id: item.id,
+            lat: item.lat,
+            lon: item.lon,
+            ebikeAvailable: item.numBikesAvailableTypes.ebike,
+            mechanicalAvailable: item.numBikesAvailableTypes.mechanical,
+            numDocksAvailable: item.numDocksAvailable,
+            postalCode: item.postalCode,
+            status: item.status,
+            street: item.street,
+            totalCapacity: item.totalCapacity,
+          };
+        });
+        console.log(formattedData);
+        setRows(formattedData);
       } catch (error) {
         console.log(error);
       }
@@ -137,23 +154,26 @@ export default function ElectricStations() {
   }, [rows]);
 
   return (
-    <div
-      className="container"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
-      <Box
-        className="pt-3 pb-3 w-100"
-        sx={{
-          height: "500px",
-        }}
+    <div>
+      <h1 className="electric-title">{t("Stations.BikeTitle")}</h1>
+      <div
+        className="container-bikes"
+        style={{ display: "flex", justifyContent: "center" }}
       >
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          localeText={localizedTextsMap}
-          pageSize={[50]}
-        />
-      </Box>
+        <Box
+          className="pt-3 pb-3 w-100"
+          sx={{
+            height: "500px",
+          }}
+        >
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            localeText={localizedTextsMap}
+            pageSize={[50]}
+          />
+        </Box>
+      </div>
     </div>
   );
 }

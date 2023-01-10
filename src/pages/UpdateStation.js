@@ -42,9 +42,22 @@ export default function UpdateElectricStation() {
         console.log(id);
 
         const result = await axios.get(
-          `http://localhost:3000/api/v2/estaciones/info/${id}`,
+          `http:///${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/info/${id}`,
           { withCredentials: true }
         );
+        input.direction = result.data.direccion;
+        input.municipality = result.data.municipio;
+        input.province = result.data.provincia;
+        input.codeProv = result.data.codiProv;
+        input.length = result.data.longitud;
+        input.latitude = result.data.latitud;
+        input.electricity = result.data.tipoCorriente;
+        input.velocity = result.data.tipoVelocidad;
+        input.vehicle = result.data.tipoVehiculo;
+        input.connection = result.data.tipoConnection;
+        input.promoter = result.data.promotor;
+        input.spots = result.data.nPlaces;
+        input.power = result.data.potencia;
         setStations(result.data);
       } catch (error) {
         console.log("Error" + error);
@@ -79,7 +92,7 @@ export default function UpdateElectricStation() {
       console.log(id);
 
       const result = await axios.put(
-        `http://localhost:3000/api/v2/estaciones/info/${id}`,
+        `http:///${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/info/${id}`,
         {
           direccion: input.direction,
           latitud: input.latitude,

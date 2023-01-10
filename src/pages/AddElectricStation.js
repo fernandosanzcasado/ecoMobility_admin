@@ -112,7 +112,7 @@ export default function AddElectricStation() {
         }
       );*/
       const result = await axios.post(
-        `http://localhost:3000/api/v2/estaciones/`,
+        `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/`,
         {
           direccion: input.direction,
           latitud: input.latitude,

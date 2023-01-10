@@ -172,7 +172,7 @@ export default function ElectricStations() {
     try {
       console.log(input.id);
       const result = await axios.delete(
-        `http://localhost:3000/api/v2/estaciones/info/${input.id}`,
+        `http:///${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/info/${input.id}`,
         { withCredentials: true }
       );
       console.log(result);
@@ -188,8 +188,7 @@ export default function ElectricStations() {
     async function getEstaciones() {
       try {
         const res = await axios.get(
-          //`http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
-          `http://localhost:3000/api/v2/estaciones`
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones`
         );
         setRows(res.data);
       } catch (error) {
@@ -205,6 +204,7 @@ export default function ElectricStations() {
 
   return (
     <div>
+      <h1 className="electric-title">{t("Stations.ElectricTitle")}</h1>
       <div className="addStation-button">
         <Button
           style={{ background: "#59DE87" }}
