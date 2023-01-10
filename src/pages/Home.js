@@ -8,6 +8,9 @@ import axios from "axios";
 import English from "../images/BanderaInglesa.jpg";
 import Spanish from "../images/BanderaEspañola.jpg";
 import Catalan from "../images/BanderaCatalana.jpg";
+import Chat from "../images/chat.png";
+import { Button, ButtonGroup, ButtonToolbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -76,6 +79,11 @@ export default function Home() {
     console.log(numBikes);
   }, [numBikes]);
 
+  const navigate = useNavigate();
+
+  const handleClickChat = () => {
+    navigate("/ecoMobility/chat");
+  };
   return (
     <div>
       <div className="cards-container">
@@ -122,6 +130,15 @@ export default function Home() {
           src={Catalan}
           onClick={() => {
             changeLanguage("cat");
+          }}
+        ></img>
+      </div>
+      <div className="chat">
+        <img
+          className="flags"
+          src={Chat}
+          onClick={() => {
+            handleClickChat();
           }}
         ></img>
       </div>

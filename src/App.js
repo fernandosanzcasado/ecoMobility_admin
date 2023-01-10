@@ -12,6 +12,7 @@ import BikeStations from "./pages/BikeStations";
 import AddElectricStation from "./pages/AddElectricStation";
 import UpdateStation from "./pages/UpdateStation";
 import UpdateUser from "./pages/UpdateUser";
+import Chat from "./pages/Chat";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/ecoMobility/users",
         element: <Users />,
+      },
+      {
+        path: "/ecoMobility/chat",
+        element: <Chat />,
       },
       {
         path: "/ecoMobility/users/updateUser/:email",
