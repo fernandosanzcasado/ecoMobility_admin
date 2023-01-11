@@ -42,7 +42,7 @@ export default function UpdateElectricStation() {
         console.log(id);
 
         const result = await axios.get(
-          `http:///${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/info/${id}`,
+          `http://${process.env.REACT_APP_BASE_URL}/api/v2/estaciones/info/${id}`,
           { withCredentials: true }
         );
         input.direction = result.data.direccion;

@@ -1,8 +1,19 @@
-.chatContainer {
+.form-box {
+  min-width: 30%;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  resize: none;
 }
 
-.messageFromUser {
+.scrollable-chat {
+  overflow-y: scroll;
+  height: 60vh;
 }
 
-.messageFromAdmin {
+.form-button {
+  margin-left: 15px;
 }

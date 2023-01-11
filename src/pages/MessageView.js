@@ -5,7 +5,7 @@ function MessageList() {
   const [messages, setMessages] = useState([]); // state to store messages
 
   useEffect(() => {
-    const socket = socketIOClient("http://localhost:3000"); // create a new socket connection
+    const socket = socketIOClient("http://localhost:3030"); // create a new socket connection
 
     // listen for new messages from the server
     socket.on("new message", (msg) => {

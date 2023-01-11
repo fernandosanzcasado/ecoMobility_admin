@@ -2,12 +2,22 @@ import React, { useState, useEffect } from "react";
 import socketIOClient from "socket.io-client";
 
 import Message from "../components/Message";
+import "./Chat.css";
 
-function MessageList() {
+var chats = [];
+
+export default function MessageList() {
   const [messages, setMessages] = useState([
-    { sentMsg: true, msg: "ALAAA ALAAAAAAAAAAAAAAAAAAAAAA" },
-    { respuesta: true, msg: "DIAMANTE PAL FREEEEEEEEEEEEEEEEEEEEEEE quepasa" },
+    {
+      sentMsg: true,
+      msg: "ALAAA ALAAAAAAAAAAAAAAAAAAAAAAaaajash dg jas dasd asty dsatyf dsa dtyasd fyj",
+    },
+    {
+      respuesta: true,
+      msg: "DIAMANTE PAL FREEEEEEEEEEEEEEEEEEEEEEEEE quepasaaaaaaaaaa",
+    },
   ]);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const socket = socketIOClient("http://localhost:3000"); // create a new socket connection
@@ -20,33 +30,52 @@ function MessageList() {
     };
   }, []);
 
+  function handleSubmit() {
+    if (!message) return;
+    chats = [...chats, { msg: message, sentMsg: true }];
+    setMessages([...chats]);
+    //socket.emit("chat message", message);
+    setMessage("");
+  }
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") handleSubmit();
+  };
+
   return (
-    <div className="container d-flex flex-column chatContainer">
-      {messages.map((msg, index) => {
-        if (msg.sentMsg) {
-          return (
-            <div
-              key={index}
-              className="messageFromAdmin d-flex flex-row justify-content-end"
-            >
-              {/* <span className=""> ADMIN: {msg.msg}</span> */}
-              <Message sentMsg={msg.sentMsg} msg={msg.msg} />
-            </div>
-          );
-        } else {
-          return (
-            <div
-              key={index}
-              className="messageFromUser d-flex flex-row justify-content-start"
-            >
-              {/* <span className=""> USER: {msg.msg}</span> */}
-              <Message respuesta={msg.respuesta} msg={msg.msg} />
-            </div>
-          );
-        }
-      })}
+    <div className="container d-flex flex-row">
+      <div className="container d-flex flex-column">
+        <div className="scrollable-chat">
+          {messages.map((msg, index) => (
+            <Message
+              respuesta={msg.respuesta}
+              sentMsg={msg.sentMsg}
+              msg={msg.msg}
+              index={index}
+            />
+          ))}
+        </div>
+        <div className="d-flex flex-row justify-content-center align-items-center col-12">
+          <input
+            className="form-box col-9"
+            type="text"
+            value={message}
+            placeholder="Write here"
+            onChange={(m) => setMessage(m.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+          <button
+            type="button"
+            className="btn-secondary btn-lg form-button col-2"
+            onClick={handleSubmit}
+          >
+            Send
+          </button>
+        </div>
+      </div>
+      <div className="container d-flex flex-column">
+        <h1>HOLA BUENAS</h1>
+      </div>
     </div>
   );
 }
-
-export default MessageList;
