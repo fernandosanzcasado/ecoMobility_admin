@@ -8,11 +8,11 @@ import "./Message.css";
 export default function Message({ respuesta, msg, sentMsg }) {
   return (
     <div>
-      <div className="respuestaBox">
-        <Avatar sx={{ bgcolor: deepPurple[500] }}>:)</Avatar>
-        <label className="respuesta">{msg}</label>
-      </div>
-
+      {respuesta && (
+        <label className="respuestaBox">
+          <label className="msgtext">{msg}</label>
+        </label>
+      )}
       {sentMsg && (
         <label className="msgbox">
           <label className="msgtext">{msg}</label>
