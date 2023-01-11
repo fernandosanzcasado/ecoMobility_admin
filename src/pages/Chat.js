@@ -3,38 +3,35 @@ import socketIOClient from "socket.io-client";
 
 import Message from "../components/Message";
 import "./Chat.css";
+import socketService from "../utils/SocketService";
 
 var chats = [];
 
 export default function MessageList() {
-  const [messages, setMessages] = useState([
-    {
-      sentMsg: true,
-      msg: "ALAAA ALAAAAAAAAAAAAAAAAAAAAAAaaajash dg jas dasd asty dsatyf dsa dtyasd fyj",
-    },
-    {
-      respuesta: true,
-      msg: "DIAMANTE PAL FREEEEEEEEEEEEEEEEEEEEEEEEE quepasaaaaaaaaaa",
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
+  const [messageReceived, setMessageReceived] = useState("");
+  const [socket, setSocket] = useState();
+  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
-    const socket = socketIOClient("http://localhost:3000"); // create a new socket connection
-    // listen for new messages from the server
-    socket.on("new message", (msg) => {
-      setMessages((prevMessages) => [...prevMessages, msg]);
+    socketService.on("admin_back", (backMessage) => {
+      console.log(backMessage);
+      setMessageReceived(backMessage);
     });
-    return () => {
-      socket.disconnect(); // clean up by disconnecting the socket on unmount
-    };
   }, []);
+
+  useEffect(() => {
+    console.log("entro");
+    chats = [...chats, { msg: messageReceived, respuesta: true }];
+    setMessages([...chats]);
+  }, [messageReceived]);
 
   function handleSubmit() {
     if (!message) return;
     chats = [...chats, { msg: message, sentMsg: true }];
     setMessages([...chats]);
-    //socket.emit("chat message", message);
+    socketService.emit("admin_back", message);
     setMessage("");
   }
 
@@ -55,9 +52,9 @@ export default function MessageList() {
             />
           ))}
         </div>
-        <div className="d-flex flex-row justify-content-center align-items-center col-12">
+        <div className="d-flex flex-row justify-content-center align-items-center col-12 m-2">
           <input
-            className="form-box col-9"
+            className="form-box mb-0 col-9"
             type="text"
             value={message}
             placeholder="Write here"

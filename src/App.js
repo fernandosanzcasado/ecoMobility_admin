@@ -14,6 +14,7 @@ import UpdateStation from "./pages/UpdateStation";
 import UpdateUser from "./pages/UpdateUser";
 import Chat from "./pages/Chat";
 import MessageView from "./pages/MessageView";
+import socketService from "./utils/SocketService";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  socketService.initializeSocket();
+
+  socketService.on("back_to_admin", (backMessage) => {
+    console.log(backMessage);
+  });
+
   return (
     <>
       <RouterProvider router={router} />
