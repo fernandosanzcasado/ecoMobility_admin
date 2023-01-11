@@ -13,6 +13,7 @@ import AddElectricStation from "./pages/AddElectricStation";
 import UpdateStation from "./pages/UpdateStation";
 import UpdateUser from "./pages/UpdateUser";
 import Chat from "./pages/Chat";
+import MessageView from "./pages/MessageView";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/ecoMobility/chat",
         element: <Chat />,
+      },
+      {
+        path: "/ecoMobility/chat/:username/messages",
+        element: <MessageView />,
       },
       {
         path: "/ecoMobility/users/updateUser/:email",

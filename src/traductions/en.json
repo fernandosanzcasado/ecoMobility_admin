@@ -62,5 +62,8 @@
     "Home": "Home",
     "Users": "Users",
     "Logout": "Logout"
+  },
+  "Chat": {
+    "Title": "User's chats"
   }
 }

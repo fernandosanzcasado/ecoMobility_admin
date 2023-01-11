@@ -62,5 +62,8 @@
     "Home": "Pàgina principal",
     "Users": "Usuaris",
     "Logout": "Tancar sessió"
+  },
+  "Chat": {
+    "Title": "Xats dels usuaris"
   }
 }
