@@ -54,10 +54,11 @@ export default function Login({ navigation }) {
         "El email es: " + input.email + " El pass es : " + input.pssw
       );
       const result = await axios.post(
-        `http:///${process.env.REACT_APP_BASE_URL}/api/v2/users/login`,
+        `http://${process.env.REACT_APP_BASE_URL}/api/v2/users/login`,
         {
           email: input.email,
           password: input.pssw,
+          exponentPushToken: "admin",
         },
         {
           withCredentials: true,
