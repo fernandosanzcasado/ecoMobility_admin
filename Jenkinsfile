@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     try {
-                      sh 'sudo scp -r -i /home/alumne/.ssh/id_rsa build ubuntu@15.188.52.76:/home/ubuntu/ecoMobility_admin'
+                      sh 'sudo /var/lib/jenkins/workspace/deploy_ecoMobility_webapp_EC2/jenkins.sh'
                     } catch (err) {
                       currentBuild.result = 'UNSTABLE'
                       throw err
