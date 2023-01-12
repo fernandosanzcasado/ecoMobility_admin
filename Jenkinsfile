@@ -7,9 +7,16 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Release') {
+        stage('Deploy') {
             steps {
-                sh 'npm run start'
+                script {
+                    try {
+                      sh 'scp -r build ubuntu@15.188.52.76:/home/ubuntu/ecoMobility_admin'
+                    } catch (err) {
+                      currentBuild.result = 'UNSTABLE'
+                      throw err
+                    }
+                }
             }
         }
     }
