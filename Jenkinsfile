@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     try {
-                      sh 'scp -r build ubuntu@15.188.52.76:/home/ubuntu/ecoMobility_admin'
+                      sh 'scp -r -i /home/alumne/.ssh/id_rsa build ubuntu@15.188.52.76:/home/ubuntu/ecoMobility_admin'
                     } catch (err) {
                       currentBuild.result = 'UNSTABLE'
                       throw err
