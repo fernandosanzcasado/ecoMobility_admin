@@ -70,11 +70,8 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  console.log("ESTA HACIENDO DOS VECES");
   socketService.initializeSocket();
-
-  socketService.on("back_to_admin", (backMessage) => {
-    console.log(backMessage);
-  });
 
   return (
     <>

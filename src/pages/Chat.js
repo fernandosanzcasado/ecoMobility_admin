@@ -23,6 +23,7 @@ export default function MessageList() {
 
   useEffect(() => {
     console.log("entro");
+    if (!messageReceived) return;
     chats = [...chats, { msg: messageReceived, respuesta: true }];
     setMessages([...chats]);
   }, [messageReceived]);
