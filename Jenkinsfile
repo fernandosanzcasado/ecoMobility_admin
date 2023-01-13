@@ -25,17 +25,17 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
-            steps {
-                script {
-                    try {
-                      sh 'sudo ssh -i /home/alumne/.ssh/id_rsa ubuntu@13.38.96.212 sh /home/ubuntu/ecoMobility_admin/deploy.sh'
-                    } catch (err) {
-                      currentBuild.result = 'UNSTABLE'
-                      throw err
-                    }
-                }
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         script {
+        //             try {
+        //               sh 'sudo ssh -i /home/alumne/.ssh/id_rsa ubuntu@13.38.96.212 sh /home/ubuntu/ecoMobility_admin/deploy.sh'
+        //             } catch (err) {
+        //               currentBuild.result = 'UNSTABLE'
+        //               throw err
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
